@@ -1,10 +1,11 @@
 import React from 'react'
   
+import Icon from 'react-native-vector-icons/Ionicons'; 
 import { createDrawerNavigator, DrawerContent, DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 import { StackNavigator } from './StackNavigator';
 import { SettingsScreen } from '../screens/SettingsScreen';
 import { Image, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
-import { styles } from '../theme/appTheme';
+import { styles, colores } from '../theme/appTheme';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Tabs } from './Tabs';
 
@@ -73,16 +74,26 @@ const MenunInterno = ( {navigation} : DrawerContentComponentProps) => {
        >
 
         <TouchableOpacity
-          style={styles.itemButtonOptions}
+          style={{
+            ...styles.itemButtonOptions,
+            flexDirection: 'row',
+          }}
           onPress={ () => navigation.navigate('Tabs')}
         >
+
+          <Icon name="compass-outline" size={30} color={colores.primary} />
           <Text style={styles.itemTitleOptions}>Navegacion</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={styles.itemButtonOptions}
+          style={{
+            ...styles.itemButtonOptions,
+            flexDirection: 'row',
+          }}
           onPress={ () => navigation.navigate('Settings')}
         >
+          
+          <Icon name="settings-outline" size={30} color={colores.primary} />
           <Text style={styles.itemTitleOptions}>Ajuste</Text>
         </TouchableOpacity>
 

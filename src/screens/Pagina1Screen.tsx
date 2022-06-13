@@ -1,9 +1,11 @@
+import React, { useEffect } from 'react'
+
+import Icon from 'react-native-vector-icons/Ionicons'; 
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { StackScreenProps } from '@react-navigation/stack';
-import React, { useEffect } from 'react'
 import { Button, Text, View, Pressable } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { styles } from '../theme/appTheme';
+import { styles, colores } from '../theme/appTheme';
 
 //Metodo 1 -> mas eficiente
 // interface Props extends StackScreenProps<any,any>{};
@@ -14,9 +16,17 @@ export const Pagina1Screen = ({navigation}:Props) => {
     useEffect(() => {
         navigation.setOptions({
            headerLeft: () => (
-                <Button
-                title='Menú'
-                onPress={ () => navigation.toggleDrawer()} />
+                // <Button
+                // title='Menús'
+                // onPress={ () => navigation.toggleDrawer()} />
+                <TouchableOpacity
+                style={{ 
+                    marginLeft: 10,
+                    backgroundColor: '#ffffff'
+                }}
+                onPress={ () => navigation.toggleDrawer()} >
+                    <Icon name="menu-outline" size={35} color={colores.primary} />
+                </TouchableOpacity>
            )
         });
        }, [])
@@ -42,27 +52,31 @@ export const Pagina1Screen = ({navigation}:Props) => {
         <TouchableOpacity
             style={{
                 ...styles.buttonNavArg,
-                backgroundColor: '#9933ff'
+                backgroundColor: '#9933ff',
+                flexDirection: 'row'
             }} 
             onPress={ () => navigation.navigate('Person', {
                 id:1,
                 nombre:'JhEd'
             })}
             >
-                <Text style={styles.titleButtonNavArg}>Jhed</Text>
+                <Icon name="body-outline" size={20} color="#ffffff"/>
+                <Text style={{...styles.titleButtonNavArg, marginLeft:5}}>Jhed</Text>
             </TouchableOpacity>
             
             <TouchableOpacity
             style={{
                 ...styles.buttonNavArg,
-                backgroundColor: '#00cc99'
+                backgroundColor: '#00cc99',
+                flexDirection: 'row'
             }} 
             onPress={ () => navigation.navigate('Person', {
                 id:2,
                 nombre:'Lisbeth'
             })}
             >
-                <Text style={styles.titleButtonNavArg}>Lisbeth</Text>
+                <Icon name="body-outline" size={20} color="#ffffff"/>
+                <Text style={{...styles.titleButtonNavArg, marginLeft:5}}>Lisbeth</Text>
             </TouchableOpacity>
        </View>
         {/* <Pressable

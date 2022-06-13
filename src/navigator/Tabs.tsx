@@ -1,5 +1,6 @@
 import React from 'react'
  
+import Icon from 'react-native-vector-icons/Ionicons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -11,6 +12,7 @@ import { StackNavigator } from './StackNavigator';
 import { colores, styles } from '../theme/appTheme';
 import { Platform, Text } from 'react-native';
 import { color } from 'react-native-reanimated';
+import { TopTabNavigator } from './TopTabNavigator';
 
 export const Tabs = () => {
   return Platform.OS === 'ios'
@@ -34,22 +36,23 @@ function TabsAndroid() {
 
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1'
+              iconName = 'people-outline'
               break;
             case 'Tab2Screen':
-              iconName = 'T2'
+              iconName = 'apps-outline'
               break;
             case 'StackNavigator':
-              iconName = 'ST'
+              iconName = 'bookmark-outline'
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>
+          // return <Text style={{color}}>{iconName}</Text>
+          return <Icon name={iconName} size={22} color={color} />
         }
       }) 
     }
     >
       <ButtonTabAndroid.Screen options={{title : ''}} name="Tab1Screen" component={Tab1Screen} />
-      <ButtonTabAndroid.Screen options={{title : ''}} name="Tab2Screen" component={Tab2Screen} />
+      <ButtonTabAndroid.Screen options={{title : ''}} name="Tab2Screen" component={TopTabNavigator} />
       <ButtonTabAndroid.Screen options={{title : ''}} name="StackNavigator" component={StackNavigator} />
     </ButtonTabAndroid.Navigator>
   );
@@ -64,16 +67,17 @@ export const TabsIOS = () => {
 
         switch (route.name) {
           case 'Tab1Screen':
-            iconName = 'T1'
+            iconName = 'people-outline'
             break;
           case 'Tab2Screen':
-            iconName = 'T2'
+            iconName = 'apps-outline'
             break;
           case 'StackNavigator':
-            iconName = 'ST'
+            iconName = 'bookmark-outline'
             break;
         }
-        return <Text style={{color}}>{iconName}</Text>
+        // return <Text style={{color}}>{iconName}</Text>
+        return <Icon name="people-outline" size={22} color={color} />
       },
       headerShown: false,
       tabBarActiveTintColor: colores.primary,    
@@ -94,7 +98,7 @@ export const TabsIOS = () => {
     >
       {/* <Tab.Screen options={{title : '', tabBarIcon: (props)=> <Text style={{color:props.color}}>T1</Text> }} name="Tab1Screen" component={Tab1Screen} /> */}
       <ButtonTabIOS.Screen options={{title : ''}} name="Tab1Screen" component={Tab1Screen} />
-      <ButtonTabIOS.Screen options={{title : ''}} name="Tab2Screen" component={Tab2Screen} />
+      <ButtonTabIOS.Screen options={{title : ''}} name="Tab2Screen" component={TopTabNavigator} />
       <ButtonTabIOS.Screen options={{title : ''}} name="StackNavigator" component={StackNavigator} />
     </ButtonTabIOS.Navigator>
   );
